@@ -1,0 +1,50 @@
+<div class="application">
+  <div class="overlay-bg">
+	<div class="container">
+	  <div class="row merchant-application">
+	    <div class="col-md-4"></div>
+	        <div class="col-md-4 outer-form">
+	          <div class="form-banner"></div>
+	          <div class="inner-form">
+	            <%= form_for(@merchant_application, :html => {'data-parsley-validate' => true}) do |f| %>
+	              <% if @merchant_application.errors.any? %>
+	                <div id="error_explanation" class="text-center error-msg">               
+	                  <% @merchant_application.errors.full_messages.each do |msg| %>
+	                    <p><%= msg %></p>
+	                  <% end %>                  
+	                </div>
+	              <% end %>
+
+	            <!-- call to action text -->
+	            <h4 class="form-header text-center">Get Started Absolutely <div class="accent">Free</div></h4>
+
+	            <!-- actual form begins here -->
+	              <div class="field form-group">
+	                <%= f.text_field :name, class: 'form-control', placeholder: 'Business Name', :required => 'true' %>
+	              </div>
+
+	              <div class="field form-group">
+	                <%= f.text_field :email, class: 'form-control', placeholder: 'Best Email', :required => 'true' %>
+	              </div>
+					
+	              <div class="field form-group category">
+					<%= f.select(:category, [['Food and Drink', 'Food and Drink'], ['Sports and Fitness', 'Sports and Fitness']], {:include_blank => 'Business Category'}, {:class => "form-control"}) %>
+	              </div>
+
+	              <div class="field form-group">
+	                <%= f.text_area :description, class: 'form-control', placeholder: 'Describe your Business', :required => 'true' %>
+	              </div>
+	              <div class="field form-group">
+	                <%= f.text_field :address, class: 'form-control', placeholder: 'Business Address', :required => 'true' %>
+	              </div>
+	              <div class="actions">
+	                <%= f.submit class: 'btn btn-default submit-button' %>
+	              </div>
+	            <% end %>
+	          </div>
+	        </div> <!-- end of col -->
+	    <div class="col-md-4"></div>
+	  </div> <!-- end of row -->
+	</div> <!-- end of container -->
+  </div>
+</div> <!-- end of application div -->

@@ -55,6 +55,10 @@ $lightblue: rgb(13, 201, 247);
 		margin-top: 15px;
 		font-size: 24px;
 	}
+
+	a:hover {
+		text-decoration: none;
+	}
 	
 }
 
@@ -68,7 +72,7 @@ $lightblue: rgb(13, 201, 247);
 .info-section {
 	position: relative;
 	width: 100%;
-	height: 500px;
+	/*height: 500px;*/
 	/*background-color: #F1F1F1;*/
 	background-color: #FDFDFD;
 
@@ -87,7 +91,13 @@ $lightblue: rgb(13, 201, 247);
 	}
 
 	.row {
-		margin-top: 10%;
+		margin-top: 4%;
+		margin-bottom: 4%;
+	}
+
+	.three-step {
+		margin-bottom: 6%;
+		font-size: 45px;
 	}
 
 	overflow: hidden; /* fix this issue -- images vertically stacked longer than the
@@ -197,13 +207,17 @@ ul.unstyled {
 	.row {
 		margin-top: 2%;
 	}
+
+	a:hover {
+		text-decoration: none;
+	}
 }
 
 
 /* styling for emotion section */
 .emotion {
 	width: 100%;
-	height: 300px;
+	/*height: 300px;*/
 	position: relative;
 
 	.container {
@@ -212,7 +226,7 @@ ul.unstyled {
 
 	img {
 		width: 100%;
-		height: 300px; /* this height shouldn't be set like this */
+		height: 300px; /* this is not necessary -- height auto adjusts based on width */
 		margin: 0;
 	}
 
@@ -269,7 +283,115 @@ ul.unstyled {
 						 length of div */
 }
 
+/* styling for merchant application form */
 
+.merchant-application {
+	margin-top: 12%;
+	margin-bottom: 7%;
+}
 
+/* this contains the bulk of the main form */
+.outer-form {
 
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+       -moz-box-shadow: 0 8px 6px -6px #999;
+            box-shadow: 0 8px 6px -6px #999;
+    border: transparent;
+	border-radius: 5px 5px 5px 5px;
+	background-color: #fff;
+	padding: 0;
+	margin-top: 50px;
+}
 
+.inner-form {
+	margin: 10%;
+}
+
+.application {
+	background-image: url('/assets/desk.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background-size: cover;
+	font-family: 'Lato', 'sans-serif';
+}
+
+.form-banner {
+	height: 60px;
+	background-color: #f05b47;
+	width: 100%;
+	border: transparent;
+	border-radius: 5px 5px 0px 0px;
+
+}
+
+.submit-button {
+	width: 100%;
+	margin-top: 10px;
+	background-color: #ed1c24;
+	color: white;
+	font-weight: 400;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+.form-header {
+	color: #797979;
+	font-weight: 600;
+	margin-bottom: 7%;
+}
+
+.accent {
+	color: #ed1c24;
+	margin: 0;
+	padding: 0;
+	display: inline-block; 
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.overlay-bg {
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.3);;
+}
+
+.error-msg {
+	color: #ed1c24;
+}
+
+.thanks {
+	h1 {
+		font-family: 'Lato';
+		font-weight: 600;
+		font-size: 50px;
+		line-height: 1.4;
+	}
+
+	#thanks-msg {
+		margin-top: 4%;
+	}
+
+	p {
+		font-family: 'Lato';
+		font-weight: 300;
+		font-size: 25px;
+	}
+	.row {
+		margin-top: 10%;
+		margin-bottom: 5%;
+	}
+
+	#home-link {
+		a {color: #f05b47;}
+		margin-top: 4%;
+	}
+}
+
+.get-started {
+	color: inherit;
+	text-decoration: none;
+}

@@ -1,4 +1,8 @@
 FlutterMerchant::Application.routes.draw do
+  resources :merchant_applications, except: [:show]
+
+  get '/merchant_applications/thanks'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
