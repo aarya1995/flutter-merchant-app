@@ -18,7 +18,8 @@ class MerchantApplicationsController < ApplicationController
   # POST /merchant_applications.json
   def create
     @merchant_application = MerchantApplication.new(merchant_application_params)
-
+    # default set the application status to false to show it hasn't been approved yet
+    @merchant_application.status = "false"
     respond_to do |format|
       if @merchant_application.save
         format.html { redirect_to '/merchant_applications/thanks', notice: 'Merchant application was successfully created.' }

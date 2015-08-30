@@ -1,5 +1,11 @@
 FlutterMerchant::Application.routes.draw do
+  devise_for :admins, controllers: { registrations: "registrations" }
+  devise_for :merchants, controllers: { registrations: "registrations" }, except: [:create]
   resources :merchant_applications, except: [:show]
+  
+  #get '/merchants/index' => 'merchants#index'
+  
+  # resources :merchants
 
   get '/merchant_applications/thanks'
 
@@ -7,6 +13,23 @@ FlutterMerchant::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'static_pages#index'
+
+  get '/static_pages/index'
+
+  # routes for dashboard defined here
+  get 'dashboard/main'
+
+  # routes for admin dashboard defined here
+  get 'admin_dashboard/main'
+  get 'admin_dashboard/new_merchant'
+  get 'admin_dashboard/review'
+
+  # path for building the merchant through the admin dashboard
+  post 'create_merchant' => 'admin_dashboard#create', as: :create_merchant
+  
+  # path for showing the merchant application details
+  get '/merchant_applications/:id', to: 'admin_dashboard#show'
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

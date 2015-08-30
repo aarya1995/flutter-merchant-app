@@ -1,0 +1,49 @@
+
+    <div id="wrapper">
+
+        <!-- admin navbar -->
+        <%= render 'shared/admin_navbar' %>
+
+        <div id="page-wrapper">
+            <div class="row" style="overflow: hidden;"> <!-- how to make table more responsive? -->
+                <h1>Review Merchant Applications</h1>
+                <hr>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                          <th>Business Name:</th>
+                          <th>Email:</th>
+                          <th>Category:</th>
+                          <th>Date created:</th>
+                          <th>Action:</th>      
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @MerchantApps.each do |merchant| %>
+                         <% if merchant.status == "false" %>
+                            <tr>
+                                <td><%= merchant.name %></td>
+                                <td><%= merchant.email %></td>
+                                <td><%= merchant.category %></td>
+                                <td><%= format_time(merchant.created_at.to_s) %></td>
+                                <td><a href="/admin_dashboard/new_merchant">Add</a> | <%= link_to 'Show', merchant %></td>
+                            </tr>
+                         <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+               
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>

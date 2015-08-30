@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.8'
 gem 'pg', '0.15.1'
 
+gem 'devise'
+gem 'gravtastic'
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
 end

@@ -1,0 +1,38 @@
+
+    <div id="wrapper">
+    <!-- admin navbar -->
+    <%= render 'shared/admin_navbar' %>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <h1>List of Existing Merchants</h1>
+                <hr>
+
+                <% @merchants.each do |merchant| %>
+                    <div class="col-md-4 merchant-icon">
+                        <div class="merchant-info"> 
+                            <%= image_tag merchant.gravatar_url(:default => "identicon") %>
+                        </div>
+
+                        <div class="merchant-info">
+
+                            <div style="margin-bottom: 5px;"><a href="#"><%= merchant.business_name %></a></div>
+                            <div><a href="#"><%= merchant.email %></a></div>
+                        </div> 
+
+                    </div>
+                <% end %>
+            </div>
+               
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>

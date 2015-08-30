@@ -1,0 +1,73 @@
+
+    <div id="wrapper">
+
+        <!-- admin navbar -->
+        <%= render 'shared/admin_navbar' %>
+
+        <div id="page-wrapper">
+            <div class="row merchant-row">
+                <h1>Create Merchant</h1>
+                <hr>
+              <div class="col-md-2"></div>
+              <div class="col-md-6">
+                <!-- basic form for adding a merchant account -->
+               <%= form_for Merchant.new, :html => {'data-parsley-validate' => true}, url: create_merchant_path do |f| %>
+                              <!-- error handling -->
+                              <% if @merchant.errors.any? %>
+                                <div id="error_explanation" class="text-center error-msg">               
+                                  <% @merchant.errors.full_messages.each do |msg| %>
+                                    <p><%= msg %></p>
+                                  <% end %>                  
+                                </div>
+                              <% end %>
+
+                            <!-- actual form begins here -->
+                              <div class="field form-group">
+                                <%= f.text_field :email, class: 'form-control', placeholder: 'Merchant email', :required => 'true' %>
+                              </div>
+
+                              <div class="field form-group">
+                                <%= f.password_field :password, class: 'form-control', placeholder: 'password', :required => 'true' %>
+                              </div>
+
+                              <div class="field form-group">
+                                <%= f.text_field :business_name, class: 'form-control', placeholder: 'Business name', :required => 'true' %>
+                              </div>
+
+                              <div class="field form-group category">
+                                <%= f.select(:category, [['Food and Drink', 'Food and Drink'], ['Sports and Fitness', 'Sports and Fitness']], {:include_blank => 'Business Category'}, {:class => "form-control"}) %>
+                              </div>
+
+                              <div class="field form-group">
+                                <%= f.text_area :description, class: 'form-control', placeholder: 'Business description', :required => 'true' %>
+                              </div>
+
+                              <div class="field form-group">
+                                <%= f.text_field :address, class: 'form-control', placeholder: 'Business address', :required => 'true' %>
+                              </div>
+                        
+                  <div class="actions">
+                    <%= f.submit class: 'btn btn-default submit-button' %>
+                  </div>
+              <% end %>
+            </div> <!-- end col -->
+            <div class="col-md-4"></div>
+            </div> <!-- end row -->
+               
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>
+
+
+
+
+
