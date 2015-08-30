@@ -30,6 +30,12 @@ FlutterMerchant::Application.routes.draw do
   # path for showing the merchant application details
   get '/merchant_applications/:id', to: 'admin_dashboard#show'
 
+  # path for showing the merchant details
+  get '/merchants/:id', to: 'admin_dashboard#show_merchant', as: 'merchant'
+
+  # path for destroying merchant
+  delete 'merchants/:id' => 'admin_dashboard#destroy'
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

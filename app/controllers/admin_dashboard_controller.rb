@@ -19,8 +19,10 @@ class AdminDashboardController < ApplicationController
 			# find the corresponding merchant application by email, and set its status
 		    # to true so that it won't show up as an application anymore
 		  	@MerchantApplication = MerchantApplication.find_by(email: params[:merchant][:email])
-		  	@MerchantApplication.status = "true"
-		  	@MerchantApplication.save! # important save
+		  	if !(@MerchantApplication.nil?)  #check to see if merchant application is nil
+			  	@MerchantApplication.status = "true"
+			  	@MerchantApplication.save! # important save
+		  	end
 		    #----------------------------------------------------------------#
 
 	        format.html { redirect_to '/admin_dashboard/main', notice: 'Merchant was successfully created.' }
@@ -40,6 +42,23 @@ class AdminDashboardController < ApplicationController
 	# show details for the merchant
 	def show
 		@MerchantApplication = MerchantApplication.find(params[:id])
+	end
+
+	def show_merchant
+		@merchant = Merchant.find(params[:id])
+	end
+	
+	# method to destroy merchant
+	def destroy 
+		@merchant = Merchant.find(params[:id])
+		@merchant.destroy
+
+		# should add a flash notification to confirm deletion
+		
+		respond_to do |format|
+			format.html { redirect_to '/admin_dashboard/main' }
+			format.xml { head :ok }
+		end
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.

@@ -16,7 +16,7 @@
 
                         <div class="merchant-info">
 
-                            <div style="margin-bottom: 5px;"><a href="#"><%= merchant.business_name %></a></div>
+                            <div style="margin-bottom: 5px;"><%= link_to merchant.business_name, merchant_path(merchant) %></div>
                             <div><a href="#"><%= merchant.email %></a></div>
                         </div> 
 

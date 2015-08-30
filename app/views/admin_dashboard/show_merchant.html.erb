@@ -1,0 +1,71 @@
+
+    <div id="wrapper">
+    <!-- admin navbar -->
+    <%= render 'shared/admin_navbar' %>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <h1>Merchant Description</h1>
+                <hr>
+                <div class="col-md-12">
+                    <div class="merchant-info">
+                        <%= image_tag @merchant.gravatar_url(:default => "identicon") %>
+                    </div>
+                    <div class="merchant-info">
+                        <p><strong>Business Name: </strong><%= @merchant.business_name %></p>
+                        <p><strong>Email: </strong><%= @merchant.email %></p>
+                    </div>
+                    <div class="merchant-info">
+                        <p><strong>Category: </strong><%= @merchant.category %></p>
+                        <p><strong>Address: </strong><%= @merchant.address %></p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 merchant-description">
+                    <p><strong>Description: </strong><%= @merchant.description %></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 destroy-merchant">
+                    <a href="#" class="btn btn-default submit-button" data-toggle="modal" data-target="#myModal">Destroy Merchant</a>
+
+                    <!-- modal confirmation -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Destroy Merchant</h4>
+                          </div>
+                          <div class="modal-body">
+                            <h4>Are you sure you want to delete <%= @merchant.business_name %>'s account?</h4>
+                            <div class="center-block">
+                                <%= link_to 'Yes', merchant_path(@merchant), :class => 'btn btn-danger modal-btn merchant-modal-btn', :method => :delete %>
+                                <button type="button" class="btn btn-default modal-btn" data-dismiss="modal">No</button>
+                            </div>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div><!-- end of row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>

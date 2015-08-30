@@ -1,5 +1,5 @@
-<!-- Navigation for admins -->
-        <nav class="navbar admin-navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<!-- Navigation -->
+        <nav class="navbar merchant-navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand admin-brand" href="/admin_dashboard/main">Flutter | Admin Dashboard</a>
+                <a class="navbar-brand merchant-brand" href="/dashboard/main">Flutter | Merchant Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -212,7 +212,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><%= link_to('Logout', destroy_admin_session_path, class: 'logout-link', :method => :delete) %></i>
+                        <li><%= link_to('Logout', destroy_merchant_session_path, class: 'logout-link', :method => :delete) %></i>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -236,15 +236,15 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/admin_dashboard/main"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/dashboard/main"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/admin_dashboard/new_merchant"><i class="fa fa-plus fa-fw"></i> Add New Merchant</a>
+                            <a href="#"><i class="fa fa-gift fa-fw"></i> Offerings</a>
                             <!-- /.nav-second-level -->
                         </li>
 
                         <li>
-                            <a href="/admin_dashboard/review"><i class="fa fa-file-text fa-fw"></i> Review Merchant Application</a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
                             <!-- /.nav-second-level -->
                         </li>
                         
