@@ -1,4 +1,6 @@
 class MerchantNotifier < ActionMailer::Base
+  include SendGrid
+  
   default from: "from@example.com"
 
   def send_signup_email(merchant)
