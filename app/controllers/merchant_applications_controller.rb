@@ -22,6 +22,9 @@ class MerchantApplicationsController < ApplicationController
     @merchant_application.status = "false"
     respond_to do |format|
       if @merchant_application.save
+        # deliver the signup email
+        MerchantNotifier.send_signup_email(@merchant_application).deliver
+        # redirect to thank you page
         format.html { redirect_to '/merchant_applications/thanks', notice: 'Merchant application was successfully created.' }
         format.json { render action: 'thanks', status: :created, location: '/merchant_applications/thanks' }
       else

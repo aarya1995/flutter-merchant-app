@@ -7,6 +7,9 @@ gem 'pg', '0.15.1'
 gem 'devise'
 gem 'gravtastic'
 
+#for emails
+gem 'sendgrid'
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
 end
