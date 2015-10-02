@@ -1,7 +1,10 @@
 FlutterMerchant::Application.routes.draw do
+
   devise_for :admins, controllers: { registrations: "registrations" }
   devise_for :merchants, controllers: { registrations: "registrations" }, except: [:create]
   resources :merchant_applications, except: [:show]
+  resources :add_offering
+  resources :offerings # unnecessary routes
   
   #get '/merchants/index' => 'merchants#index'
   
@@ -15,9 +18,13 @@ FlutterMerchant::Application.routes.draw do
   root 'static_pages#index'
 
   get '/static_pages/index'
+  get '/static_pages/test'
 
-  # routes for dashboard defined here
+  # routes for merchant dashboard defined here
   get 'dashboard/main'
+  get 'dashboard/offerings'
+  get 'dashboard/new_offering'
+  post 'create_offering' => 'dashboard#create_offering', as: :create_offering
 
   # routes for admin dashboard defined here
   get 'admin_dashboard/main'

@@ -1,0 +1,116 @@
+<div id="wrapper">
+
+        <%= render 'shared/merchant_navbar' %>
+
+        <div id="page-wrapper">
+           <%= render 'shared/progress_bar' %>
+
+           <div class="row offering-form-row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 offering-form-col">
+              <!-- start of this dank form -->
+               <%= form_for @offering, url: wizard_path do |f| %>
+                <h2 class="booking-title">Scheduling:</h2>
+
+                <div class="form-group">
+                  <%= f.label(:frequency, "Please specify frequency of the activity:") %>
+                  <%= f.select(:frequency, [['once', 'once'], ['recurring', 'recurring']], {:include_blank => 'frequency'}, {:class => "form-control frequency"}) %>
+                </div>
+
+                <!-- form group for date time picker -->
+                  <div style="overflow:hidden;" class="calendar1">
+                      <h2 class="start-date">2. Enter start date and time</h2>
+                      <div class="form-group">
+                          <div class='input-group date' id='datetimepicker1'>
+                              <input name="start_time" type='text' class="form-control" style="display:none;" />
+                          </div>
+                      </div>
+                 
+                    <script type="text/javascript">
+                       
+                            $('#datetimepicker1').datetimepicker({
+                              inline: true,
+                              sideBySide: true
+                            });
+                        
+                    </script>
+
+                    <!-- end date and time -->
+                    <h2 class="end-date">2. Enter end date and time:</h2>
+                    <div class="form-group">
+                          <div class='input-group date' id='datetimepicker2'>
+                              <input name="end_time" type='text' class="form-control" style="display:none;" />
+                          </div>
+                      </div>
+                 
+                    <script type="text/javascript">
+                       
+                            $('#datetimepicker2').datetimepicker({
+                              inline: true,
+                              sideBySide: true
+                            });
+                        
+                    </script>
+                </div>
+    
+                <!-- end markup for date time picker -->
+
+                <!-- markup for the days of the week selector -->
+                <div class="days-selector">
+                  <h2 class="week">3. Enter days of the week you want to repeat this activity <small> (e.g. every Saturday, Sunday, Monday)</small></h2>
+                  <div class="form-group">
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Monday">Monday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Tuesday">Tuesday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Wednesday" value="">Wednesday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Thursday">Thursday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Friday">Friday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Saturday">Saturday</label>
+
+                    <label class="checkbox-inline"><input type="checkbox" name="days[]" value="Sunday">Sunday</label>
+                  </div>
+                </div>
+
+                <div class="actions">
+                      <%= f.submit "Continue", class: 'btn btn-lg btn-green' %>
+                </div>
+              <% end %>  
+              <!-- end of this dank form -->
+            </div>
+            </div class="col-md-3"></div>
+           </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+</div>
+    <!-- /#wrapper -->
+
+<script>
+
+  var Frequency = jQuery('.frequency');
+  var select = this.value;
+  Frequency.change(function () {
+      if ($(this).val() == 'once') {
+          $('.calendar1').show();
+          $('.days-selector').hide();
+      } else if($(this).val() == 'recurring') {
+          $('.calendar1').show();
+          $('.days-selector').show();
+      } else { 
+          $('.calendar1').hide(); // hide div if value is not "custom"
+          $('.days-selector').hide();
+      }
+  });
+
+</script>
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>

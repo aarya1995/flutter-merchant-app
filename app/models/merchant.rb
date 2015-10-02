@@ -7,4 +7,6 @@ class Merchant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    validates :business_name, :category, :description, :address, :presence => true
+
+   has_many :offerings
 end

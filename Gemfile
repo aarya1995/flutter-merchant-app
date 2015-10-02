@@ -4,11 +4,18 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.8'
 gem 'pg', '0.15.1'
 
+gem 'wicked'
+gem 'paperclip', '~> 4.2'
+
 gem 'devise'
 gem 'gravtastic'
 
 #for emails
 gem 'sendgrid'
+
+#for datetime picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

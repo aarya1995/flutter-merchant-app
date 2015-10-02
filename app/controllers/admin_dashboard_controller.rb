@@ -61,6 +61,10 @@ class AdminDashboardController < ApplicationController
 		end
 	end
 
+	#method to upload offering
+	def new_offering
+	end
+
 	# Never trust parameters from the scary internet, only allow the white list through.
     def merchant_params
       params.require(:merchant).permit(:email, :password, :business_name, :category, :description, :address)

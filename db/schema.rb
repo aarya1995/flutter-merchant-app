@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830200640) do
+ActiveRecord::Schema.define(version: 20151002181859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,5 +66,30 @@ ActiveRecord::Schema.define(version: 20150830200640) do
 
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true, using: :btree
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true, using: :btree
+
+  create_table "offerings", force: true do |t|
+    t.string   "title"
+    t.string   "venue"
+    t.string   "address"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "frequency"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.text     "days"
+    t.integer  "merchant_id"
+    t.string   "price"
+    t.string   "quantity"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+  end
+
+  add_index "offerings", ["merchant_id"], name: "index_offerings_on_merchant_id", using: :btree
 
 end
