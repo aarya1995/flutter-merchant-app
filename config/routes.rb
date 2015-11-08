@@ -4,6 +4,7 @@ FlutterMerchant::Application.routes.draw do
   devise_for :merchants, controllers: { registrations: "registrations" }, except: [:create]
   resources :merchant_applications, except: [:show]
   resources :add_offering
+  resources :add_activity # routes for adding general activity -- Wizard steps
   resources :offerings # unnecessary routes
   
   #get '/merchants/index' => 'merchants#index'
@@ -23,7 +24,11 @@ FlutterMerchant::Application.routes.draw do
   # routes for merchant dashboard defined here
   get 'dashboard/main'
   get 'dashboard/offerings'
+  get 'dashboard/offering_type'
   get 'dashboard/new_offering'
+  get 'dashboard/new_activity'
+  get 'dashboard/offerings_index'
+  post 'create_activity' => 'dashboard#create_activity', as: :create_activity
   post 'create_offering' => 'dashboard#create_offering', as: :create_offering
 
   # routes for admin dashboard defined here

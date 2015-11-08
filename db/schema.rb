@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002181859) do
+ActiveRecord::Schema.define(version: 20151108211412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 20151002181859) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "bookable_activities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "general_activities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "merchant_applications", force: true do |t|
     t.string   "name"
@@ -67,27 +82,57 @@ ActiveRecord::Schema.define(version: 20151002181859) do
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true, using: :btree
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true, using: :btree
 
-  create_table "offerings", force: true do |t|
-    t.string   "title"
-    t.string   "venue"
-    t.string   "address"
-    t.string   "description"
+  create_table "offering_images", force: true do |t|
+    t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "offering_id"
+  end
+
+  add_index "offering_images", ["offering_id"], name: "index_offering_images_on_offering_id", using: :btree
+
+  create_table "offerings", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "description"
+    t.string   "activity_type"
+    t.string   "activity_topic"
+    t.text     "interests"
+    t.text     "outing_purpose"
+    t.text     "moods"
+    t.integer  "quantity"
+    t.text     "terms"
+    t.integer  "price"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "venue_name"
     t.string   "frequency"
     t.text     "start_time"
     t.text     "end_time"
     t.text     "days"
-    t.integer  "merchant_id"
-    t.string   "price"
-    t.string   "quantity"
+    t.string   "repeat_monthly"
+    t.text     "booking_close"
+    t.text     "booking_start"
+    t.text     "slots"
+    t.string   "status"
+    t.string   "type"
     t.string   "website"
     t.string   "facebook"
+    t.string   "yelp"
     t.string   "twitter"
+    t.string   "instagram"
+    t.integer  "merchant_id"
+    t.string   "voucher_name"
+    t.string   "voucher_description"
+    t.string   "is_offering_complete"
   end
 
   add_index "offerings", ["merchant_id"], name: "index_offerings_on_merchant_id", using: :btree

@@ -1,0 +1,2 @@
+class BookableActivity < Offering
+end

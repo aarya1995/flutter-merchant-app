@@ -1,0 +1,50 @@
+<div id="wrapper">
+
+    <%= render 'shared/merchant_navbar' %>
+
+    <div id="page-wrapper">
+    	<% flash.each do |key, value| %>
+			<h3><%= content_tag(:div, value, class: "alert alert-#{key}") %></h3>
+		<% end %>
+	    <h1 style="font-weight: 700;">Current Offerings</h1>
+    <hr>
+
+    <div class="row form-templates">
+    	<% @offerings.each do |offering| %> <!-- loading offerings programatically -->
+    	<% @offering_images = OfferingImage.where(offering_id: offering.id).all %>
+    	<% @display_image = @offering_images.first %>
+			<div class="col-md-6">
+				<div class="container">
+					<div class="card hovercard">
+					   <img src="<%= @display_image.photo %>" alt=""/>
+					   
+					   <div class="info">
+					      <div class="title text-center">
+					         <%= offering.title %>
+					         <hr class="offering-hr">
+					      </div>
+					     
+					      <div class="col-md-12">
+						    <%= offering.description %>
+						  </div>
+						  
+					   </div>
+					   <div class="bottom center-block" style="text-align:center;">
+					      <a href="#"><button class="btn btn-default create-button"></i>View</button></a>
+					   </div>
+					</div>
+				</div>
+			</div>
+		<% end %> <!-- end loading offering programatically in card format -->
+		  </div>
+          
+    </div> <!-- /#page-wrapper -->
+</div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>

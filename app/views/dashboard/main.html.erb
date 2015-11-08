@@ -102,49 +102,7 @@
                     </div>
                 </div>
             </div>
-            <!-- markup for displaying active offerings in card view -->
-            <% @offerings.each do |offering| %>
-                <div class="row active-deals">
-                    <div class="col-md-8 no-padding lib-item card-container" data-category="view">
-                        <div class="lib-panel">
-                            <div class="row box-shadow">
-                                <div class="col-md-6">
-                                    <img class="lib-img-show" src="<%= offering.image.url %>">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="lib-row lib-header">
-                                        <%= offering.title %>
-                                        <div class="lib-header-seperator"></div>
-                                    </div>
-                                    <div class="lib-row lib-desc">
-                                        <p><%= offering.description %></p>
-                                        
-                                        <% if offering.frequency == "once" %>
-                                            <p></strong>Start time</strong>: <%= offering.start_time %></p>
-                                            <p><strong>End time:</strong> <%= offering.end_time %></p>
-                                        <% else %>
-                                            <p><strong>Start time:</strong> <%= offering.start_time %></p>
-                                            <p><strong>End time:</strong> <%= offering.end_time %></p>
-                                            <p><strong>When:</strong> Every <% offering.days.each do |x| %>
-                                                    <%= x %>, 
-                                                <% end %>
-                                        <% end %></p>
-
-                                        <p><strong>Address:</strong> <%= offering.address %></p>
-
-                                        <h3><i class="fa fa-facebook"></i>
-                                        <i class="fa fa-twitter" style="margin-left:12px;"></i>
-                                        <i class="fa fa-globe" style="margin-left:12px;"></i>
-                                        </h3>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
-            <% end %>
+           
         </div>
         <!-- /#page-wrapper -->
 
