@@ -17,6 +17,10 @@ class DashboardController < ApplicationController
 		@activity = GeneralActivity.new
 	end
 
+	def new_booking
+		@booking = BookableActivity.new
+	end
+
 	def create_activity
 		@activity = GeneralActivity.new(activity_params)
 		@activity.merchant_id = current_merchant.id
@@ -33,6 +37,25 @@ class DashboardController < ApplicationController
 			redirect_to add_activity_path(:tagging)
 		else
 			render 'new_activity'
+		end
+	end
+
+	def create_booking
+		@booking = BookableActivity.new(booking_params)
+		@booking.merchant_id = current_merchant.id
+		@booking.is_offering_complete = "false"
+		if params[:photos].length <= 3 && @booking.save
+			
+			# handling image upload #
+			params[:photos].each { |photo|
+				@booking.offering_images.create(photo: photo)
+			}
+			# image upload logic complete #
+			
+			session[:booking_id] = @booking.id # to remember which activity to modify
+			redirect_to add_booking_path(:tagging)
+		else
+			render 'new_booking'
 		end
 	end
 
@@ -57,6 +80,11 @@ class DashboardController < ApplicationController
 
 	def activity_params
 		params.require(:general_activity).permit(:title, :description, :venue_name, :address1, :address2, 
+			:city, :state, :zipcode) # only params required for step 1
+	end
+
+	def booking_params
+		params.require(:bookable_activity).permit(:title, :description, :venue_name, :address1, :address2, 
 			:city, :state, :zipcode) # only params required for step 1
 	end
 end

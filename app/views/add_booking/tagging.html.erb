@@ -1,0 +1,103 @@
+<div class="loader"></div>
+
+<div id="wrapper">
+
+        <%= render 'shared/merchant_navbar' %>
+
+        <div id="page-wrapper">
+           <!-- markup for progress bar -->
+           <div class="container">
+
+            <div class="row bs-wizard" style="border-bottom:0;">
+                
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Activity Summary</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Add Tags</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Scheduling</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Booking</div>
+                </div>
+            </div>
+          </div>  <!-- end markup for progress bar -->
+
+           <div class="row offering-form-row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6 offering-form-col">
+                <%= form_for @booking, url: wizard_path, :html => { 'data-parsley-validate' => true } do |f| %>
+                  
+                  <div class="form-group">
+                    <%= f.label :activity_type %>
+                    <%= f.select :activity_type, options_for_select(activity_type), {}, { :class => 'form-control my_select_box', :multiple => 'true', :required => 'true' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :activity_topic %>
+                    <%= f.select :activity_topic, options_for_select(activity_topic), {}, { :class => 'form-control my_select_box', :multiple => 'true', :required => 'true' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :interests %>
+                    <%= f.select :interests, options_for_select(interests), {}, { :class => 'form-control my_select_box', :multiple => 'true', :required => 'true' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :outing_purpose %>
+                    <%= f.select :outing_purpose, options_for_select(outing_purpose), {}, { :class => 'form-control my_select_box', :multiple => 'true', :required => 'true' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :moods %>
+                    <%= f.select :moods, options_for_select(moods), {}, { :class => 'form-control my_select_box', :multiple => 'true', :required => 'true' } %>
+                  </div>
+
+                  <div class="actions">
+                      <%= f.submit "Continue", class: 'btn btn-lg btn-green' %>
+                  </div>
+                <% end %>
+            </div>
+            </div class="col-md-5"></div>
+           </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+</div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>
+
+<script>
+$(window).load(function() {
+      $(".loader").fadeOut(1000);
+    })
+
+   $(".my_select_box").chosen({
+    disable_search_threshold: 10,
+    no_results_text: "Oops, nothing found!",
+    width: "95%"
+  });
+</script>

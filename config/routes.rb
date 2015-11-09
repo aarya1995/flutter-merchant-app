@@ -5,6 +5,7 @@ FlutterMerchant::Application.routes.draw do
   resources :merchant_applications, except: [:show]
   resources :add_offering
   resources :add_activity # routes for adding general activity -- Wizard steps
+  resources :add_booking # routes for adding booking -- Wizard steps
   resources :offerings # unnecessary routes
   
   #get '/merchants/index' => 'merchants#index'
@@ -27,9 +28,11 @@ FlutterMerchant::Application.routes.draw do
   get 'dashboard/offering_type'
   get 'dashboard/new_offering'
   get 'dashboard/new_activity'
+  get 'dashboard/new_booking'
   get 'dashboard/offerings_index'
   post 'create_activity' => 'dashboard#create_activity', as: :create_activity
   post 'create_offering' => 'dashboard#create_offering', as: :create_offering
+  post 'create_booking' => 'dashboard#create_booking', as: :create_booking
 
   # routes for admin dashboard defined here
   get 'admin_dashboard/main'

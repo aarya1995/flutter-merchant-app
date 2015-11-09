@@ -13,7 +13,7 @@ class AddActivityController < ApplicationController
 	def update
 		@activity_id = session[:activity_id]
 		@activity = Offering.find_by(id: @activity_id)
-		slots_empty = true
+		
 		case step
 		when :tagging
 			@activity.update_attributes(:activity_type => params[:general_activity][:activity_type], 

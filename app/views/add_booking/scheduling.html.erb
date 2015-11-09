@@ -1,0 +1,613 @@
+<div class="loader"></div>
+
+<div id="wrapper">
+
+        <%= render 'shared/merchant_navbar' %>
+
+        <div id="page-wrapper">
+           <!-- markup for progress bar -->
+           <div class="container">
+
+            <div class="row bs-wizard" style="border-bottom:0;">
+                
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Activity Summary</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Add Tags</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Scheduling</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">Booking</div>
+                </div>
+            </div>
+          </div>  <!-- end markup for progress bar -->
+
+           <div class="row offering-form-row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6 offering-form-col">
+                <%= form_for @booking, url: wizard_path, :html => { 'data-parsley-validate' => true } do |f| %>
+                  <h2 class="week">1. Select which days you want to add bookings for <small> (e.g. Every Wednesday and Friday)</small></h2>
+
+                  <div class="form-group weekdays">  
+                    <%= check_box_tag(:monday, "monday") %>
+                    <%= label_tag(:monday, "Monday") %>
+                    <%= check_box_tag(:tuesday, "tuesday") %>
+                    <%= label_tag(:tuesday, "Tuesday") %>
+                    <%= check_box_tag(:wednesday, "wednesday") %>
+                    <%= label_tag(:wednesday, "Wednesday") %>
+                    <%= check_box_tag(:thursday, "thursday") %>
+                    <%= label_tag(:thursday, "Thursday") %>
+                    <%= check_box_tag(:friday, "friday") %>
+                    <%= label_tag(:friday, "Friday") %>
+                    <%= check_box_tag(:saturday, "saturday") %>
+                    <%= label_tag(:saturday, "Saturday") %>
+                    <%= check_box_tag(:sunday, "sunday") %>
+                    <%= label_tag(:sunday, "Sunday") %>
+                    <%= check_box_tag(:everyday, "everyday") %>
+                    <%= label_tag(:everyday, "Everyday") %>
+                  </div>
+
+                <div class="Monday day">
+                  <h2>Monday:</h2>
+                  <hr>
+                  <div class="col-md-12" style="margin-top: 3%; margin-bottom: 7%;">
+                    <btn class="add-slot-btn btn-lg" onclick="addSlot()"><i class="fa fa-plus"></i> Add Slot</btn>
+                  </div>
+                  <div class="slot1 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>  
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot1').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot2 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot2').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot3 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot3').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot4 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot4').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot5 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot5').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot6 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot6').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="slot7 slot">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= label_tag("start time:") %>
+                          <div class='input-group date' id='datetimepicker3'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <%= label_tag("end time:") %>
+                          <div class='input-group date' id='datetimepicker4'>
+                              <input type='text' name="Monday[]" class="form-control monday" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <a onclick="$('.slot7').toggle(function() { i--; });"><i class="fa fa-3x fa-close" style="color:#F44336; margin-top: 20px;"></i></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Tuesday day">
+                  <h2>Tuesday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker5'>
+                            <input type='text' name="Tuesday[]" class="form-control tuesday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker6'>
+                            <input type='text' name="Tuesday[]" class="form-control tuesday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Wednesday day">
+                  <h2>Wednesday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker7'>
+                            <input type='text' name="Wednesday[]" class="form-control wednesday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker8'>
+                            <input type='text' name="Wednesday[]" class="form-control wednesday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Thursday day">
+                  <h2>Thursday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker9'>
+                            <input type='text' name="Thursday[]" class="form-control thursday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                  <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker10'>
+                            <input type='text' name="Thursday[]" class="form-control thursday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Friday day">
+                  <h2>Friday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker11'>
+                            <input type='text' name="Friday[]" class="form-control friday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker12'>
+                            <input type='text' name="Friday[]" class="form-control friday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Saturday day">
+                  <h2>Saturday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker13'>
+                            <input type='text' name="Saturday[]" class="form-control saturday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker14'>
+                            <input type='text' name="Saturday[]" class="form-control saturday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Sunday day">
+                  <h2>Sunday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker15'>
+                            <input type='text' name="Sunday[]" class="form-control sunday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker16'>
+                            <input type='text' name="Sunday[]" class="form-control sunday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="Everyday day">
+                  <h2>Everyday:</h2>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <%= label_tag("start time:") %>
+                        <div class='input-group date' id='datetimepicker17'>
+                            <input name="Everyday[]" type='text' class="form-control everyday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= label_tag("end time:") %>
+                        <div class='input-group date' id='datetimepicker18'>
+                            <input type='text' name="Everyday[]" class="form-control everyday" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="actions">
+                  <%= f.submit "Continue", class: 'btn btn-lg btn-green' %>
+                </div> 
+                <% end %>
+            </div>
+            </div class="col-md-5"></div>
+           </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+</div>
+    <!-- /#wrapper -->
+
+
+<style>
+.abhas-navbar {
+    display: none;
+}
+</style>
+
+<script>
+
+/* javascript for adding slots */
+var i = 0;
+
+function addSlot() {
+  i++;
+  if (i == 1) {
+    $(".slot1").toggle();
+  } else if (i == 2) {
+    $(".slot2").toggle();
+  } else if (i == 3) {
+    $(".slot3").toggle();
+  } else if (i == 4) {
+    $(".slot4").toggle();
+  } else if (i == 5) {
+    $(".slot5").toggle();
+  } else if (i == 6) {
+    $(".slot6").toggle();
+  } else if (i == 7) {
+    $(".slot7").toggle();
+  }
+}
+
+function removeSlot() {
+
+}
+/* end javascript for adding slots */
+
+$(window).load(function() {
+      $(".loader").fadeOut(1000);
+    })
+
+$('#datetimepicker3').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker4').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker5').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker6').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker7').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker8').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker9').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker10').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker11').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker12').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker13').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker14').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker15').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker16').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker17').datetimepicker({
+            format: 'LT'
+          });
+      $('#datetimepicker18').datetimepicker({
+            format: 'LT'
+          });
+
+  $('input[type="checkbox"]').click(function(){
+        if($(this).attr("value")=="monday"){
+            $(".Monday").toggle(function() {
+              $(".monday").val("");
+            });
+        }
+        if($(this).attr("value")=="tuesday"){
+            $(".Tuesday").toggle(function() {
+              $(".tuesday").val("");
+            });
+        }
+        if($(this).attr("value")=="wednesday"){
+            $(".Wednesday").toggle(function() {
+              $(".wednesday").val("");
+            });
+        }
+        if($(this).attr("value")=="thursday"){
+            $(".Thursday").toggle(function() {
+              $(".thursday").val("");
+            });
+        }
+        if($(this).attr("value")=="friday"){
+            $(".Friday").toggle(function() {
+              $(".friday").val("");
+            });
+        }
+        if($(this).attr("value")=="saturday"){
+            $(".Saturday").toggle(function() {
+              $(".saturday").val("");
+            });
+        }
+        if($(this).attr("value")=="sunday"){
+            $(".Sunday").toggle(function() {
+              $(".sunday").val("");
+            });
+        }
+        if($(this).attr("value")=="everyday"){
+            $(".Everyday").toggle(function() {
+              $(".everyday").val("");
+            });
+        }
+    });
+
+</script>
