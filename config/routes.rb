@@ -20,6 +20,7 @@ FlutterMerchant::Application.routes.draw do
   root 'static_pages#index'
 
   get '/static_pages/index'
+  get '/static_pages/new_landing'
   get '/static_pages/test'
 
   # routes for merchant dashboard defined here
